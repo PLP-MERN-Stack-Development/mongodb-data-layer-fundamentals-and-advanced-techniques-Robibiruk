@@ -1,10 +1,11 @@
 // insert_books.js - Script to populate MongoDB with sample book data
 
-// Import MongoDB client
+// Load environment variables
+require('dotenv').config();
 const { MongoClient } = require('mongodb');
 
-// Connection URI (replace with your MongoDB connection string if using Atlas)
-const uri = 'mongodb://localhost:27017';
+// Use Atlas connection string from .env
+const uri = process.env.MongoDBAtlas_URI;
 
 // Database and collection names
 const dbName = 'plp_bookstore';
@@ -122,6 +123,25 @@ const books = [
     pages: 635,
     publisher: 'Harper & Brothers'
   },
+  { 
+    title: 'The Da Vinci Code', 
+    author: 'Dan Brown', 
+    genre: 'Thriller', 
+    pages: 689, published_year: 2003, 
+    price: 14.99, 
+    in_stock: false, 
+    publisher: 'Doubleday' 
+  },
+  { 
+    title: 'The Hunger Games', 
+    author: 'Suzanne Collins', 
+    genre: 'Dystopian', 
+    pages: 374, 
+    published_year: 2008, 
+    price: 10.99, 
+    in_stock: true, 
+    publisher: 'Scholastic Press' 
+  },
   {
     title: 'Wuthering Heights',
     author: 'Emily Brontë',
@@ -135,7 +155,7 @@ const books = [
 ];
 
 // Function to insert books into MongoDB
-async function insertBooks() {
+async function insertBooksOnly() {
   const client = new MongoClient(uri);
 
   try {
@@ -175,8 +195,8 @@ async function insertBooks() {
   }
 }
 
-// Run the function
-insertBooks().catch(console.error);
+// // Run the function
+// insertBooks().catch(console.error);
 
 /*
  * Example MongoDB queries you can try after running this script:
@@ -196,3 +216,5 @@ insertBooks().catch(console.error);
  * 5. Find in-stock books:
  *    db.books.find({ in_stock: true })
  */ 
+
+module.exports = { insertBooksOnly };
