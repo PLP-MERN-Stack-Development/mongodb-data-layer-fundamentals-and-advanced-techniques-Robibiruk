@@ -1,6 +1,3 @@
-Perfect! Here’s a **polished, professional version** ready for GitHub, with badges and a table showing scripts and their purpose. Save this as `README_PROJECT.md`:
-
-````markdown
 # PLP Bookstore MongoDB Project
 
 ![Node.js](https://img.shields.io/badge/Node.js-339933?logo=node.js&logoColor=white)
